@@ -1,0 +1,14 @@
+from sklearn.feature_extraction.text import CountVectorizer # For creating the bag of words model
+from sklearn.feature_extraction.text import TfidfTransformer # For transforming bag of words model into tfidf model
+
+# Creating BOW model
+
+# min_df means if the word should appears less than  3 documents then exclude it.
+# max_df means if the word appears more than 60 percent of the documents then exclude it.
+# max_features are the max number of words. 
+vectorizer = CountVectorizer(max_features = 2000, min_df = 3, max_df = 0.6, stop_words = stopwords.words('english'))
+X = vectorizer.fit_transform(corpus).toarray()
+
+# Transforming that model into Tf-IDF model
+transformer = TfidfTransformer()
+X = transformer.fit_transform(X).toarray()
